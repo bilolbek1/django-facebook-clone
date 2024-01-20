@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # ADDED PACKAGES
+
 
     # ADDED APPS
     'user',
@@ -116,6 +118,10 @@ USE_I18N = True
 USE_TZ = True
 
 
+MEDIA_ROOT = 'media-files'
+MEDIA_URL = '/media/'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -124,14 +130,13 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = 'staticfiles'
 
 
-MEDIA_ROOT = 'media-files'
-MEDIA_URL = 'media/'
 
 
-
+LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.CustomUser'
+

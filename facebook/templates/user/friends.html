@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<style>
+
+#fb{
+	width:500px;
+	border:none;
+	background-color: white;
+	border-radius:5px;
+	height:160px;
+	margin-left: 33vw;
+	margin-top: 5vw;
+  }
+  #fb p{
+	font-family:sans-serif;
+	margin: 0 0 0 10px;
+	line-height:30px;
+  }
+  
+  #fb img{
+	position:absolute;
+	left:10px;
+	top:52.5px;
+	border-radius: 60%;
+	background-size: cover;
+	object-fit: cover;
+  }
+  
+  #info{
+	position:absolute;
+	left:120px;
+	top:75px;
+  }
+  
+  #info {
+	color:#4267B2;
+	line-height:25px;
+	font-size:18px;
+  }
+  
+  #info span{
+	color:#777;
+	font-size:14px;
+  }
+  
+  #button-block{
+	position:absolute;
+	right:10px;
+	top:85px;
+  }
+  
+  #button-block div{
+	display:inline-block;
+  }
+  
+  #confirm, #delete{
+	background-color:#4267B2;
+	color:white;
+	padding:7px;
+	border-radius:2px;
+	margin-right:10px;
+	font-family:sans-serif;
+  }
+  
+  #delete{
+	color:#222;
+	background-color:#bbb;
+	border:1px solid #999;
+	padding:6px;
+	margin-right:0;
+  }
+  
+  #button-block div:hover{
+	opacity:.8;
+	cursor:pointer;
+  }
+  
+  
+  
+  
+
+</style>
+    
+    
+    	<div id="fb">
+		<div style="position: relative; margin-top: -4vw;">
+			<img src="https://i.pinimg.com/originals/2d/c6/9c/2dc69c79ce2b0f5404b5bbf39ef6fb77.jpg" height="100" width="100" alt="Image of woman">
+			<p id="info"><b>Natalie G.</b> <br> <span>14 mutual friends</p>
+			<div id="button-block">
+				<div id="confirm">Confirm</div>
+				<div id="delete">Delete Request</div>
+			</div>
+		</div>
+	</div>
+    
+    
+    
+    
+
+{% endblock content %}

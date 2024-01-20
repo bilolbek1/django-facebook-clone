@@ -1,0 +1,48 @@
+{% extends 'user-profile.html' %}
+
+
+{% block main %}
+
+
+    {% for i in posts %}
+<div style="margin-top: 1vw">
+    <div class="post">
+        <div class="tb">
+            <a href="#" class="td p-p-pic"><img
+                    src="{{ i.user_id.image.url }}"
+                    alt="Rajeev's profile pic"></a>
+            <div class="td p-r-hdr">
+                <div class="p-u-info">
+                    <a href="#">{{ i.user_id.username }}</a>
+                </div>
+                <div class="p-dt">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>{{ i.created_time }}</span>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'post-detail' i.id %}"><p style="padding: 1vw; color: black">{{ i.title }}</p></a>
+
+        <a href="#" class="p-cnt-v">
+            <img style="height: 400px; background-size: cover; object-fit: cover;"
+                src="{{ i.image.url }}">
+            <p style="padding: 1vw; color: black">{{ i.text | truncatewords:10 }}...  </p>
+        </a>
+        <div>
+            <div class="p-acts">
+                <div class="p-act like"><i style="color: blue;"
+                        class="fa-solid fa-thumbs-up"></i><span>{{ i.liked.all.count }}</span></div>
+                <div class="p-act like"><i style="color: yellow;"
+                        class="fa-solid fa-bookmark"></i><span>{{ i.saved.all.count }}</span></div>
+                <div class="p-act comment"><i style="color: cadetblue;"
+                        class="fa-regular fa-comment"></i><span>{{ i.review_set.all.count }}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+
+{% endblock main %}

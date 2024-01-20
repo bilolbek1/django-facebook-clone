@@ -3,8 +3,9 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.views import View
-
+from facebook.models import Profile
 from user.forms import RegisterForm
+from user.models import CustomUser
 
 
 class RegisterView(View):
@@ -20,8 +21,8 @@ class RegisterView(View):
         register_form = RegisterForm(data=request.POST)
         if register_form.is_valid():
             register_form.save()
-            return redirect('login')
 
+            return redirect('login')
         else:
             context = {
                 'register_form': register_form

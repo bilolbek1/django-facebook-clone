@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    {{ user.username }}
+    {{ user.email }}
+    {{ user.image }}
+    
+    <form method="post" action="{% url 'follow' %}">
+        {% csrf_token %}
+        <input type="hidden" value="{{ user.id }}" name="user_id">
+        {% if request.user not in user.profile.followed.all  %}
+            <button class="btn btn-primary" type="submit">Follow</button>
+        {% else %}
+            <button class="btn btn-primary" type="submit">Followed</button>
+        {% endif %}
+    
+    
+    </form>
+    
+
+
+
+
+
+{% endblock content %}
