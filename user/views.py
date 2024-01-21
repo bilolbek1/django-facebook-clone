@@ -21,7 +21,9 @@ class RegisterView(View):
         register_form = RegisterForm(data=request.POST)
         if register_form.is_valid():
             register_form.save()
-
+            username = request.POST.get('username')
+            user = CustomUser.objects.get(username=username)
+            Profile.objects.create(user=user)
             return redirect('login')
         else:
             context = {
