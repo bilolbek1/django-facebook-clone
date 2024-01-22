@@ -13,7 +13,9 @@
 	border-radius:5px;
 	height:160px;
 	margin-left: 33vw;
-	margin-top: 5vw;
+	margin-top: 2vw;
+    position: relative;
+    padding-top: -2vw;
   }
   #fb p{
 	font-family:sans-serif;
@@ -85,17 +87,20 @@
 
 </style>
     
-    
-    	<div id="fb">
-		<div style="position: relative; padding-top: 4vw;">
-			<img src="https://i.pinimg.com/originals/2d/c6/9c/2dc69c79ce2b0f5404b5bbf39ef6fb77.jpg" height="100" width="100" alt="Image of woman">
-			<p id="info"><b>Natalie G.</b> <br> <span>14 mutual friends</p>
+    {% for i in friends %}
+    <div id="fb" style="margin-bottom: -2vw">
+		<div style="position: relative;">
+			<img src="{{ i.image.url }}" height="100" width="100">
+			<p id="info"><b>{{ i.username }}</b> <br> <span><b>{{ i.profile.followed.all.count }}</b> <i>followers</i></p>
 			<div id="button-block">
-				<div id="confirm">Confirm</div>
-				<div id="delete">Delete Request</div>
+                <a href="{% url 'user-detail' i.id %}" id="confirm">Go profile</a>
+				<a id="delete">Go chat</a>
 			</div>
 		</div>
 	</div>
+    {% endfor %}
+    
+    
     
     
     

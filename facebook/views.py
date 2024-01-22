@@ -358,13 +358,12 @@ class FriendsListPageView(View):
     def get(self, request):
         user = request.user
         friends = user.profile.followed.all()
+        print(friends)
         context = {
-            'friends': friends
+            'friends': friends,
         }
 
         return render(request, 'user/friends.html', context)
-
-
 
 
 
