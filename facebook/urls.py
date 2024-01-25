@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import HomePageView, PostDetailView, EditPostView, CreatePostView, DeletePostView, \
 ProfileView, PostReviewView, UsersListView, UserDetailView, FollowView, PostLikeView, PostSaveView, \
-SavedPostPageView, LikedPostPageView, MyPostsPageView, FriendsListPageView
+SavedPostPageView, LikedPostPageView, MyPostsPageView, FriendsListPageView, UserFollowingsPageView, \
+UserFollowersPageView
 
 
 urlpatterns = [
@@ -21,6 +22,8 @@ urlpatterns = [
     path('user/liked/', LikedPostPageView.as_view(), name='user-liked'),
     path('my/posts/', MyPostsPageView.as_view(), name='my-posts'),
     path('user/friends/', FriendsListPageView.as_view(), name='user-friends'),
+    path('user/followers/', UserFollowersPageView.as_view(), name='user-followers'),
+    path('user/followings/', UserFollowingsPageView.as_view(), name='user-followings'),
 
 
 ]

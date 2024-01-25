@@ -761,10 +761,10 @@
 				<div id="u-name">{{ user.first_name }} {{ user.last_name }}</div>
 				<div class="tb" id="m-btns">
 					<div class="td">
-						<div class="m-btn"><i class="fa-solid fa-users"></i> <span> Follorwers</span></div>
+						<a href="{% url 'user-followers' %}"><div class="m-btn"><i class="fa-solid fa-users"></i> <span style="margin: 0.5vw; font-size: 1.1vw"> Follorwers    <b>{{ followers_count }}</b></span></div></a>
 					</div>
 					<div class="td">
-						<div class="m-btn"><i class="fa-solid fa-users"></i> <span> Folowing</span></div>
+						<a href="{% url 'user-followings' %}"><div class="m-btn"><i class="fa-solid fa-users"></i> <span style="margin: 0.5vw; font-size: 1.1vw"> Folowing    <b>{{ following_count }}</b></span></div></a>
 					</div>
 				</div>
 			</div>

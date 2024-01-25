@@ -17,10 +17,14 @@ class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         posts = Post.objects.filter(user_id=user.id)
+        followers_count = user.profile.followed.all().count()
+        following_count = Profile.objects.filter(followed=user).count()
         print(posts)
         context = {
             'user': user,
-            'posts': posts
+            'posts': posts,
+            'followers_count': followers_count,
+            'following_count': following_count,
         }
         return render(request, 'user-profile.html', context)
 
@@ -358,15 +362,46 @@ class FriendsListPageView(View):
     def get(self, request):
         user = request.user
         friends = user.profile.followed.all()
+        friends_2 = []
+        profiles = Profile.objects.filter(followed=user)
+        for i in profiles:
+            if i.user in friends:
+                continue
+            else:
+                friends_2.append(i.user)
+        print(friends_2)
         print(friends)
         context = {
             'friends': friends,
+            'friends_2': friends_2,
         }
 
         return render(request, 'user/friends.html', context)
 
 
 
+class UserFollowersPageView(LoginRequiredMixin, View):
+    def get(self, request):
+        user = request.user
+        followers = user.profile.followed.all()
+        context = {
+            'followers': followers,
+        }
+        return render(request, 'user/followers.html', context)
+
+
+
+class UserFollowingsPageView(LoginRequiredMixin, View):
+    def get(self, request):
+        user = request.user
+        profiles = Profile.objects.filter(followed=user)
+        followings = []
+        for i in profiles:
+            followings.append(i.user)
+        context = {
+            'followings': followings,
+        }
+        return render(request, 'user/following.html', context)
 
 
 

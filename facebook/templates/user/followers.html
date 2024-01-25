@@ -87,7 +87,7 @@
 
 </style>
     
-    {% for i in friends %}
+    {% for i in followers %}
     <div id="fb" style="margin-bottom: 1vw">
 		<div style="position: relative;">
 			<img src="{{ i.image.url }}" height="100" width="100">
@@ -100,20 +100,7 @@
 	</div>
     {% endfor %}
     
-    {% for i in friends_2 %}
-    <div id="fb" style="margin-bottom: 1vw">
-		<div style="position: relative;">
-			<img src="{{ i.image.url }}" height="100" width="100">
-			<p id="info"><b>{{ i.username }}</b> <br> <span><b>{{ i.profile.followed.all.count }}</b> <i>followers</i></p>
-			<div id="button-block">
-                <a href="{% url 'user-detail' i.id %}" id="confirm">Go profile</a>
-				<a id="delete">Go chat</a>
-			</div>
-		</div>
-	</div>
-    {% endfor %}
-    
-    
+      
     
     
     

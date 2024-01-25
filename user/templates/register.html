@@ -1,19 +1,161 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
 </head>
+<style>
+    body{
+        background-color: #385591;
+    }
+    .dad{
+        padding: 10px;
+        background-color: #385591;
+        border-radius: 20px;
+        width: 600px;
+        height: 540px;
+        margin-top: 5vw;
+        margin-right: 15vw;
+    }
+
+    label{
+        color: white ;
+        display: block;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-bottom: 0.5vw;
+    }
+    body{
+        margin-bottom: 50px;
+    }
+
+    h1{
+        text-align: center;
+        color: white;
+        font-family: sans-serif;
+        font-weight: bold;
+        margin-bottom: 2vw;
+    }
+    h6{
+       text-align: center;
+       font-size: 1.1vw;
+       color: #ff8585;
+        margin-bottom: 1vw;
+        margin-top: -1vw;
+    }
+
+    input{
+        outline: teal;
+        width: 100%;
+        height: 2.5vw;
+        border-radius:5px ;
+        margin-bottom: 0.7vw;
+        border: none;
+        padding-left: 1vw;
+        background-color: #333131;
+        color: #7B66FF;
+    }
+
+    p{
+        font-family: sans-serif;
+        color: #9c9191;
+        margin-top: 1vw;
+    }
+    .signup-btn{
+        width: 380px;
+        height: 50px;
+        text-align: center;
+        margin-left: 6vw;
+        border: none;
+        border-radius: 5px;
+        background-color: #7B66FF;
+        color: white;
+        margin-top: 30px;
+    }
+
+    .signup-btn:hover{
+        background: black;
+        color: #7B66FF;
+        transition: 0.4s all ease-in-out;
+        border: 1px solid #7B66FF;
+    }
+    li{
+        text-decoration: none;
+        color: wheat;
+        text-align: center;
+    }
+
+</style>
 <body>
 
-    <form method="post">{% csrf_token %}
-    
-        {{ register_form.as_p }}
-        
-        <button type="submit">Submit</button>
-        
+<div class="w-1/2 my-6 dad mx-auto p-6 bg-gray-100 rounded-xl margin-0" style="
+        width: 600px; height: 800px;">
+
+    <form  method="post">
+        {% csrf_token %}
+        <h1>Sign Up</h1>
+        <h6>Welcome to Social Book App | Please enter your data</h6>
+
+        <div class="mb-3">
+            <label class="inline-block">Username</label>
+            {{ register_form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label class="inline-block">First Name</label>
+            {{ register_form.first_name }}
+        </div>
+
+        <div class="mb-3">
+            <label class="block">Last Name</label>
+            {{ register_form.last_name }}
+        </div>
+
+        <div class="mb-3">
+            <label class="inline-block">Email</label>
+            {{ register_form.email }}
+        </div>
+
+        <div class="mb-3">
+            <label class="inline-block">Password</label>
+            {{ register_form.password }}
+        </div>
+
+        {% if register_form.errors or register_form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100">
+                {% for i in register_form %}
+
+                    {{ i.errors }}
+
+                {% endfor %}
+
+            {{ register_form.non_field_errors }}
+            </div>
+
+
+        {% endif %}
+
+        <button class="bg-teal-500 signup-btn" type="submit">SignUp</button>
     </form>
 
+      </div>
 
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+

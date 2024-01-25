@@ -1,18 +1,157 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
 </head>
+<style>
+    body{
+        background-color: #385591;
+    }
+
+    .dad{
+        padding: 10px;
+        background-color: #385591;
+        border-radius: 20px;
+        width: 600px;
+        height: 540px;
+        margin-top: 5vw;
+        margin-right: 15vw;
+    }
+
+    .login-label{
+        color: white ;
+        display: block;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-bottom: 0.5vw;
+    }
+    body{
+        margin-bottom: 50px;
+    }
+
+    h1{
+        text-align: center;
+        color: white;
+        font-family: sans-serif;
+        font-weight: bold;
+        margin-bottom: 2vw;
+    }
+    h6{
+       text-align: center;
+       font-size: 1.1vw;
+       color: #8f7aec;
+        margin-bottom: 1vw;
+        margin-top: -1vw;
+    }
+
+    input{
+        outline: teal;
+        width: 100%;
+        height: 3.2vw;
+        border-radius:5px ;
+        margin-bottom: 0.7vw;
+        border: none;
+        padding-left: 1vw;
+        background-color: #333131;
+        color: #00FFAB;
+    }
+
+    p{
+        font-family: sans-serif;
+        color: #9c9191;
+        margin-top: 1vw;
+    }
+    .login-btn{
+        width: 360px;
+        height: 50px;
+        text-align: center;
+        margin-left: 6vw;
+        border: none;
+        border-radius: 5px;
+        background-color: #00FFAB;
+        color: white;
+        margin-top: 30px;
+    }
+
+    .login-btn:hover{
+        background: black;
+        color: #00FFAB;
+        transition: 0.4s all ease-in-out;
+        border: 1px solid #00FFAB;
+    }
+    li{
+        text-decoration: none;
+        color: wheat;
+        text-align: center;
+    }
+    h5{
+        text-align: center;
+        color: white;
+        margin-top: 2vw;
+    }
+    h5 a{
+        text-decoration: none;
+        color: #00FFAB;
+    }
+
+</style>
 <body>
 
-    <form method="post">{% csrf_token %}
-        
-        {{ login_form.as_p }}
-        
-        <button type="submit">Submit</button>    
-        
+
+              <div class="w-1/2 my-6 dad mx-auto p-6 bg-gray-100 rounded-xl margin-0" >
+
+    <form method="post">
+        {% csrf_token %}
+        <h1>Log In to your account</h1>
+        <h6>Welcome back Social Book | Please enter your data</h6>
+
+        <div class="mb-3">
+            <label class="inline-block login-label">Username</label>
+            {{ login_form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label class="inline-block login-label">Password</label>
+            {{ login_form.password }}
+        </div>
+
+
+
+        {% if login_form.errors or login_form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100">
+                {% for i in login_form %}
+
+                    {{ i.errors }}
+
+                {% endfor %}
+
+            {{ login_form.non_field_errors }}
+            </div>
+
+
+        {% endif %}
+
+        <button class="bg-teal-500 login-btn" type="submit">Log In</button>
+
+        <h5>Don't have an account?   <a href="{% url 'register' %}"> Sign Up</a></h5>
     </form>
 
+      </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
