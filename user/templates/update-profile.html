@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+  {% block content %}
+      <style>
+form{
+    margin-top: 2vw;
+}      
+      
+label{
+    color: #ffffff;
+    display: block;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5vw;
+}
+body{
+    margin-bottom: 50px;
+    background-color: #3c5c9f;
+}
+
+h1{
+    text-align: center;
+    color: #ffffff;
+    font-family: "Digital-7 Mono", monospace;
+    margin-bottom: 2vw;
+}
+
+input{
+    outline: teal;
+    width: 100%;
+    height: 2.5vw;
+    border-radius:5px ;
+    margin-bottom: 0.7vw;
+    border: none;
+    padding-left: 1vw;
+}
+
+p{
+    font-family: sans-serif;
+    color: wheat;
+    margin-top: 1vw;
+}
+button{
+    width: 160px;
+    height: 50px;
+    text-align: center;
+    margin-left: 42vw;
+    border: none;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+}
+
+button:hover{
+    background: white;
+    color: teal;
+    transition: 0.4s all ease-in-out;
+}
+</style>
+
+      <form method="post" action="{% url 'update-profile' %}" enctype="multipart/form-data">{% csrf_token %}
+        <h1>Profile update</h1>
+        {{ update_form.as_p }}
+
+        <button type="submit" class="btn btn-success">Update Profile</button>
+    </form>
+
+
+{% endblock content %}

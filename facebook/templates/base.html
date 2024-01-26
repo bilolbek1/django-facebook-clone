@@ -42,6 +42,16 @@
 </style>
 <body>
 
+{% if messages%}
+
+    {% for i in messages %}
+
+        <p class="alert alert-{{ i.tags }}">{{ i }}</p>
+
+    {% endfor %}
+
+{% endif %}
+
 
     <nav>
         <div class="nav-left">
@@ -64,6 +74,8 @@
         </div>
       </nav>
 
+    
+    
 
 {% block content %}
 

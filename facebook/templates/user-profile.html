@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% url 'lik' as liked %}
+{% url 'user-liked' as liked %}
 {% url 'user-saved' as saved %}
-{% url 'my-posts' as myposts %}
+{% url 'my-posts' as posts %}
 {% url 'create-post' as create-post %}
 
 {% load static %}
@@ -787,7 +787,7 @@
 						<div class="cnt-label">
 							<i class="l-i" id="l-i-i"></i>
 							<span>Intro</span>
-							<div class="lb-action"><a><i class="fa-solid fa-pen-to-square"></i></a></div>
+							<div class="lb-action"><a href="{%  url 'update-profile' %}"><i class="fa-solid fa-pen-to-square"></i></a></div>
 						</div>
 						<div id="i-box">
 							<div id="intro-line">{{ user.username }}</div>
@@ -808,11 +808,11 @@
 						<div class="tb">
 							<div class="td">
 								<div class="tb" id="p-tabs-m">
-									<a href="{% url 'user-liked' %}" class="td {% if request.path == liked %} active {% endif %}"><i class="fa-solid fa-heart"></i><span>Liked posts</span>
+									<a href="{% url 'user-liked' %}" class="td {% if request.path == liked %} td active {% endif %}"><i class="fa-solid fa-heart"></i><span>Liked posts</span>
 									</a>
 									<a href="{% url 'user-saved' %}" class="td {% if request.path == saved %} active {% endif %}"><i class="fa-solid fa-bookmark"></i><span>Saved posts</span></a>
 									<a href="{% url 'user-friends' %}" class="td"><i class="fa-solid fa-user-group"></i><span>Friends</span></a>
-									<a href="{% url 'my-posts' %}" class="td {% if request.path == myposts %} active {% endif %}"><i class="fa-solid fa-shop"></i><span>My posts</span></a>
+									<a href="{% url 'my-posts' %}" class="td {% if request.path == posts %} active {% endif %}"><i class="fa-solid fa-shop"></i><span>My posts</span></a>
 									<a href="{% url 'create-post' %}" class="td"><i class="fa-solid fa-shop"></i><span>Create post</span></a>
 								</div>
 							</div>

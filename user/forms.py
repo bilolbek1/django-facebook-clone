@@ -18,3 +18,33 @@ class RegisterForm(ModelForm):
 
 
 
+class UpdateProfileForm(ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'image', 'email', 'first_name', 'last_name']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
