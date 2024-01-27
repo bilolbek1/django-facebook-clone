@@ -36,10 +36,9 @@ class ProfileView(LoginRequiredMixin, View):
 class HomePageView(View):
     def get(self, request):
         posts = Post.objects.all()
-        # random_posts = random.sample(posts, 1)
+        posts = random.sample(list(posts), 1)
         context = {
             'posts': posts,
-            # 'random_posts': random_posts,
         }
         return render(request, 'home.html', context)
 
@@ -329,6 +328,7 @@ class SavedPostPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         posts = Post.objects.filter(saved=user)
+        posts = posts.order_by('-id')
         context = {
             'posts': posts
         }
@@ -340,6 +340,7 @@ class LikedPostPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         posts = Post.objects.filter(liked=user)
+        posts = posts.order_by('-id')
         context = {
             'posts': posts
         }
@@ -351,6 +352,7 @@ class MyPostsPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         posts = Post.objects.filter(user_id=user)
+        posts = posts.order_by('-id')
         context = {
             'posts': posts
         }
@@ -383,9 +385,15 @@ class FriendsListPageView(View):
 class UserFollowersPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
+        search = request.GET.get('q', '')
         followers = user.profile.followed.all()
+        if search:
+            followers = followers.filter(
+                Q(username__icontains=search)
+            )
         context = {
             'followers': followers,
+            'search': search,
         }
         return render(request, 'user/followers.html', context)
 
@@ -394,14 +402,38 @@ class UserFollowersPageView(LoginRequiredMixin, View):
 class UserFollowingsPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
+        search = request.GET.get('q', '')
         profiles = Profile.objects.filter(followed=user)
+        if search:
+            profiles = profiles.filter(
+                Q(user__username__icontains=search)
+            )
         followings = []
         for i in profiles:
             followings.append(i.user)
+
         context = {
             'followings': followings,
+            'search': search,
         }
         return render(request, 'user/following.html', context)
+
+
+
+
+class SearchUsersPageView(View):
+    def get(self, request):
+        search = request.GET.get('q', '')
+        users = CustomUser.objects.exclude(username=request.user.username)
+        if search:
+            users = users.filter(
+                Q(username__icontains=search) | Q(first_name__icontains=search)
+            )
+        context = {
+            'search': search,
+            'users': users,
+        }
+        return render(request, 'user/users-search.html', context)
 
 
 
