@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.db.models import Q
-from django.shortcuts import render, redirect
+from django.db.models import Q, Count
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
 from .forms import CreatePostForm, ReviewForm
@@ -436,69 +436,11 @@ class SearchUsersPageView(View):
         return render(request, 'user/users-search.html', context)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# def delete_review(request, post_id, review_id):
+#     post = get_object_or_404(Post, id=post_id)
+#     review = get_object_or_404(Review, id=review_id, post=post)
+#
+#     if request.method == 'POST':
+#         review.delete()
+#         return redirect('post_detail', post_id=post_id)
+#     return render(request, 'posts/post-detail.html', {'review': review})

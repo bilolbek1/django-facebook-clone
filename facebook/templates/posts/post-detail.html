@@ -77,45 +77,6 @@ body {
    position: relative;
 }
 
-/**
-* Lineas / Detalles
------------------------*/
-/* .comments-list:before {
-   content: '';
-   width: 2px;
-   height: 100%;
-   background: #c7cacb;
-   position: absolute;
-   left: 32px;
-   top: 0;
-}
-
-.comments-list:after {
-   content: '';
-   position: absolute;
-   background: #c7cacb;
-   bottom: 0;
-   left: 27px;
-   width: 7px;
-   height: 7px;
-   border: 3px solid #dee1e3;
-   -webkit-border-radius: 50%;
-   -moz-border-radius: 50%;
-   border-radius: 50%;
-}
-
-.reply-list:before, .reply-list:after {display: none;}
-.reply-list li:before {
-   content: '';
-   width: 60px;
-   height: 2px;
-   background: #c7cacb;
-   position: absolute;
-   top: 25px;
-   left: -55px;
-}
-*/
-
 .comments-list li {
    margin-bottom: 15px;
    display: block;
@@ -297,6 +258,36 @@ body {
 	.comment-main-level .comment-box{
 		margin-right: -3vw;
 	}
+    .form{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    margin-top: 35vw;
+    margin-left: 30vw;
+}
+.form p textarea{
+    width: 40vw;
+    height: 2.5vw;
+    padding: 0.3vw;
+    font-size: 1.2vw;
+    outline: none;
+}
+.form p label{
+    display: none;
+}
+.form button{
+    border: none;
+    width: 4vw;
+    height: 2.5vw;
+    padding: 0.3vw;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(127, 59, 236);
+}
+
+body{
+    margin-bottom: 3vw;
+}
 </style>
 
 {##-----POST---SECTION---------------------------####################################################}
@@ -388,9 +379,8 @@ body {
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="#">{{ i.user_id.username }}</a></h6>
-							<span>{{ i.created_tima }}</span>
-							<i class="fa fa-reply"></i>
-							<i class="fa fa-heart"></i>
+							<span>{{ i.created_time }}</span>
+							<a href="#"><i style="color: red" class="fa-solid fa-trash"></i></a>
 						</div>
 						<div class="comment-content">
 							{{ i.text }}
@@ -409,12 +399,12 @@ body {
     
     
     
-    <form method="post" action="{% url 'post-review' post.id %}">{% csrf_token %}
+    <form class="form" method="post" action="{% url 'post-review' post.id %}">{% csrf_token %}
     
         {{ review_form.media }}
         {{ review_form.as_p }}
     
-        <button type="submit">add review</button>
+        <button type="submit">add</i></button>
     
     </form>
     

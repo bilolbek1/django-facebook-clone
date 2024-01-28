@@ -13,6 +13,7 @@ urlpatterns = [
     path('delete-post/<int:id>/', DeletePostView.as_view(), name='delete-post'),
     path('user-profile/', ProfileView.as_view(), name='user-profile'),
     path('post/<int:id>/review/', PostReviewView.as_view(), name='post-review'),
+    # path('post/<int:post_id>/review/<int:review_id>', delete_review, name='delete-review'),
     path('user/list/', UsersListView.as_view(), name='user-list'),
     path('user/<int:id>/', UserDetailView.as_view(), name='user-detail'),
     path('user/follow', FollowView.as_view(), name='follow'),
