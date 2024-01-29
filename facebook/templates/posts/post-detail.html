@@ -262,8 +262,8 @@ body {
     position: fixed;
     display: flex;
     flex-direction: row;
-    margin-top: 35vw;
-    margin-left: 30vw;
+    margin-top: 36vw;
+    margin-left: 28.5vw;
 }
 .form p textarea{
     width: 40vw;
@@ -286,7 +286,7 @@ body {
 }
 
 body{
-    margin-bottom: 3vw;
+    margin-bottom: 5vw;
 }
 </style>
 
@@ -345,8 +345,8 @@ body{
                 
                 {% if request.user == post.user_id %}
                 
-                    <a href="{% url 'edit-post' post.id %}"><button class="btn btn-success mt-3">Edit</button></a>
-                    <a href="{% url 'delete-post' post.id %}"><button class="btn btn-danger mt-3 ">Delete</button></a>
+                    <a style="margin-top: 1.6vw; margin-left: 12vw" href="{% url 'edit-post' post.id %}"><i style="color: yellowgreen" class="fa-solid fa-pen-to-square"></i></a>
+                    <a style="margin-top: 1.6vw;" href="{% url 'delete-post' post.id %}"><i style="color: red" class="fa-solid fa-trash"></i></a>
                 
                 {% endif %}
                 
@@ -379,8 +379,12 @@ body{
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="#">{{ i.user_id.username }}</a></h6>
-							<span>{{ i.created_time }}</span>
-							<a href="#"><i style="color: red" class="fa-solid fa-trash"></i></a>
+							<span>{{ i.created_time|date:"D d M Y H:i" }}</span>
+                            {% if i.user_id == request.user %}
+                                <form method="post" action="{% url 'delete-review' post.id i.id %}">{% csrf_token %}
+                                    <button style="border: none;background-color: #FCFCFC"><i style="color: red" class="fa-solid fa-trash"></i></button>
+                                </form>
+                            {% endif %}
 						</div>
 						<div class="comment-content">
 							{{ i.text }}
@@ -404,7 +408,7 @@ body{
         {{ review_form.media }}
         {{ review_form.as_p }}
     
-        <button type="submit">add</i></button>
+        <button type="submit">add</button>
     
     </form>
     

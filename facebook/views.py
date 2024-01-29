@@ -436,11 +436,11 @@ class SearchUsersPageView(View):
         return render(request, 'user/users-search.html', context)
 
 
-# def delete_review(request, post_id, review_id):
-#     post = get_object_or_404(Post, id=post_id)
-#     review = get_object_or_404(Review, id=review_id, post=post)
-#
-#     if request.method == 'POST':
-#         review.delete()
-#         return redirect('post_detail', post_id=post_id)
-#     return render(request, 'posts/post-detail.html', {'review': review})
+def delete_review(request, post_id, review_id):
+    post = get_object_or_404(Post, id=post_id)
+    review = get_object_or_404(Review, id=review_id, post_id=post)
+
+    if request.method == 'POST':
+        review.delete()
+        return redirect('post-detail', id=post.id)
+    return render(request, 'posts/post-detail.html', {'review': review})

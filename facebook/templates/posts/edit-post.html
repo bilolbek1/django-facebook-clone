@@ -1,11 +1,79 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% load static %}
 
 
 {% block content %}
+<style>
 
+form{
+    margin-top: 5vw;
+    margin-left: 33vw;
+}      
+      
+label{
+    color: #ffffff;
+    display: block;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5vw;
+}
+body{
+    margin-bottom: 50px;
+    background-color: #3c5c9f;
+}
+
+h1{
+    text-align: center;
+    color: #ffffff;
+    font-family: "Digital-7 Mono", monospace;
+    margin-bottom: 2vw;
+}
+
+input, textarea{
+    padding: 0.5vw;
+    outline: teal;
+    width: 50%;
+    height: 2.5vw;
+    border-radius:5px ;
+    margin-bottom: 0.7vw;
+    border: none;
+    padding-left: 1vw;
+}
+
+p{
+    font-family: sans-serif;
+    color: wheat;
+    margin-top: 1vw;
+}
+button{
+    width: 160px;
+    height: 50px;
+    text-align: center;
+    margin-left: 12vw;
+    border: none;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+}
+
+
+button:hover{
+    background: #9137ff;
+    color: white;
+    transition: 0.4s all ease-in-out;
+}
+h1{
+    text-align: center;
+    margin: 2vw;
+    font-weight: bold;
+    font-size: 3vw;
+    color: wheat;
+
+}
+</style>
+    
+    <h1>Edit post</h1>
 
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
     

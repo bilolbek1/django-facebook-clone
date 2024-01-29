@@ -26,7 +26,7 @@ class Review(models.Model):
 
 
     def __str__(self):
-        return f"{self.text[10]}... by {self.user_id}"
+        return f"{self.text}... by {self.user_id}"
 
 
 
