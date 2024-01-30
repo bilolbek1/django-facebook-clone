@@ -186,9 +186,11 @@ class UserDetailView(View):
     def get(self, request, id):
         user = CustomUser.objects.get(id=id)
         posts = Post.objects.filter(user_id=user)
+        followings = Profile.objects.filter(followed=user).count()
         context = {
             'user': user,
-            'posts': posts
+            'posts': posts,
+            'followings': followings,
         }
         return render(request, 'user/user_detail.html', context)
 
@@ -444,3 +446,44 @@ def delete_review(request, post_id, review_id):
         review.delete()
         return redirect('post-detail', id=post.id)
     return render(request, 'posts/post-detail.html', {'review': review})
+
+
+
+
+
+
+class OneUserFollowersPageView(LoginRequiredMixin, View):
+    def get(self, request, id):
+        user = CustomUser.objects.get(id=id)
+        search = request.GET.get('q', '')
+        followers = user.profile.followed.all()
+        if search:
+            followers = followers.filter(
+                Q(username__icontains=search)
+            )
+        context = {
+            'followers': followers,
+            'search': search,
+        }
+        return render(request, 'user/one-user-followers.html', context)
+
+
+
+class OneUserFollowingsPageView(LoginRequiredMixin, View):
+    def get(self, request, id):
+        user = CustomUser.objects.get(id=id)
+        search = request.GET.get('q', '')
+        profiles = Profile.objects.filter(followed=user)
+        if search:
+            profiles = profiles.filter(
+                Q(user__username__icontains=search)
+            )
+        followings = []
+        for i in profiles:
+            followings.append(i.user)
+
+        context = {
+            'followings': followings,
+            'search': search,
+        }
+        return render(request, 'user/one-user-following.html', context)

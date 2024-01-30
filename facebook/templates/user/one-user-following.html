@@ -91,16 +91,12 @@
 </style>
     
     
-    
-    <form class="input-group " style="width: 40vw; margin-left: 30vw; margin-top: 1.7vw">
-  <input value="{{ search }}" name="q" style="padding: 0.5vw" type="search" class="form-control rounded" placeholder="Find users" aria-label="Search" aria-describedby="search-addon" />
-  <button type="submit" class="btn btn-outline-warning" data-mdb-ripple-init>search</button>
+        <form class="input-group " style="width: 40vw; margin-left: 30vw; margin-top: 1.7vw">
+  <input value="{{ search }}" name="q" style="padding: 0.5vw" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <button type="submit" class="btn btn-outline-warning">search</button>
 </form>
-
     
-    
-    
-    {% for i in users %}
+    {% for i in followings %}
     <div id="fb" style="margin-bottom: 1vw">
 		<div style="position: relative;">
 			<img src="{{ i.image.url }}" height="100" width="100">
@@ -113,7 +109,8 @@
 	</div>
     {% endfor %}
     
-      
+    
+    
     
     
     

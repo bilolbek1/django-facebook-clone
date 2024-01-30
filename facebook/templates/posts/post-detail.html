@@ -50,7 +50,7 @@ ul {
 
 body {
    font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
-   background: #dee1e3;
+   background: #385591;
 }
 
 /** ====================
@@ -367,7 +367,7 @@ body{
 {#---------------------POST---COMMENTS---LISTS---------########################################## #}
     
     {% if post.review_set.all.exists  %}
-        <h1 style="font-size: 1.5vw; margin-top: 1vw;margin-bottom: -2vw; font-weight: bold; text-align: center">COMMENTS</h1>
+        <h1 style="font-size: 1.5vw; color: wheat; margin-top: 1vw;margin-bottom: -2vw; font-weight: bold; text-align: center">COMMENTS</h1>
         <div class="comments-container">
 		<ul id="comments-list" class="comments-list">
             {% for i in post.review_set.all %}
@@ -379,7 +379,7 @@ body{
 					<div class="comment-box">
 						<div class="comment-head">
 							<h6 class="comment-name by-author"><a href="#">{{ i.user_id.username }}</a></h6>
-							<span>{{ i.created_time|date:"D d M Y H:i" }}</span>
+							<span>{{ i.created_time|date:"D d | M Y | H:i" }}</span>
                             {% if i.user_id == request.user %}
                                 <form method="post" action="{% url 'delete-review' post.id i.id %}">{% csrf_token %}
                                     <button style="border: none;background-color: #FCFCFC"><i style="color: red" class="fa-solid fa-trash"></i></button>
