@@ -460,7 +460,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
             
             {% if user.post_set.exists %}
             
-                {% for i in user.post_set %}
+                {% for i in user.post_set.all %}
                 
                 <div class="gallery-item col-3" tabindex="0">
 
@@ -469,8 +469,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
 				<div class="gallery-item-info">
 
 					<ul>
-						<li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+						<li class="gallery-item-likes"><a href="{% url 'post-detail' i.id %}" class="visually-hidden">Likes:</a><i class="fas fa-heart" aria-hidden="true"></i> {{ i.liked.count }}</li>
+						<li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> {{ i.review_set.all.count }}</li>
 					</ul>
 
 				</div>

@@ -69,7 +69,7 @@
           <div class="search-box">
             <i class="fa-brands fa-searchengin"></i>
             <!-- <img src="https://cdn.shopify.com/s/fil`es/1/0702/0511/2635/files/search.png" /> -->
-            <a href="{% url 'user-search' %}"><input type="text" placeholder="search" /></a>
+            <a href="{% url 'user-search' %}"><input type="text" placeholder="Find user" /></a>
           </div>
           <div class="nav-user-icon online" onclick="settingsmenutoggle()">
             <a href="{% url 'user-profile' %}"><img src="{{ request.user.image.url }}" /></a>
