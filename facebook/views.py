@@ -11,7 +11,7 @@ from .models import Follow, Post, Like, Review, Save, Profile
 import random
 
 
-#################### THIS VIEW IS FOR PROFILE PAGE ############################
+#################### USER PROFILE PAGE ############################
 
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
@@ -31,12 +31,12 @@ class ProfileView(LoginRequiredMixin, View):
 
 
 
-###################### THIS VIEW IS FOR HOME PAGE ##############################
+###################### HOME PAGE ##############################
 
 class HomePageView(View):
     def get(self, request):
         posts = Post.objects.all()
-        posts = random.sample(list(posts), 1)
+        posts = random.sample(list(posts), 2)
         context = {
             'posts': posts,
         }
@@ -45,7 +45,7 @@ class HomePageView(View):
 
 
 
-###################### THIS VIEW IS FOR POST DETAIL PAGE ##############################
+###################### POST DETAIL PAGE ##############################
 
 class PostDetailView(View):
     def get(self, request, id):
@@ -62,7 +62,7 @@ class PostDetailView(View):
 
 
 
-###################### THIS VIEW IS FOR POST REVIEW ##############################
+###################### POST'S REVIEW ##############################
 
 
 class PostReviewView(LoginRequiredMixin, View):
@@ -90,7 +90,7 @@ class PostReviewView(LoginRequiredMixin, View):
 
 
 
-###################### THIS VIEW IS FOR CREATE POST PAGE ##############################
+###################### CREATE POST PAGE ##############################
 
 class CreatePostView(LoginRequiredMixin, View):
     def get(self, request):
@@ -123,9 +123,9 @@ class CreatePostView(LoginRequiredMixin, View):
 
 
 
-###################### THIS VIEW IS FOR EDIT POST PAGE ##############################
+###################### EDIT POST PAGE ##############################
 
-class EditPostView(View):
+class EditPostView(LoginRequiredMixin, View):
     def get(self, request, id):
         post = Post.objects.get(id=id)
         edit_post_form = CreatePostForm(instance=post)
@@ -155,9 +155,9 @@ class EditPostView(View):
 
 
 
-###################### THIS VIEW IS FOR DELETE POST PAGE ##############################
+###################### DELETE POST PAGE ##############################
 
-class DeletePostView(View):
+class DeletePostView(LoginRequiredMixin, View):
     def get(self, request, id):
         post = Post.objects.get(id=id)
         post.delete()
@@ -166,7 +166,7 @@ class DeletePostView(View):
 
 
 
-###################### THIS VIEW IS FOR USERS LIST PAGE ##############################
+###################### USERS LIST PAGE ##############################
 
 
 class UsersListView(View):
@@ -180,7 +180,7 @@ class UsersListView(View):
 
 
 
-###################### THIS VIEW IS FOR USERS LIST PAGE ##############################
+###################### USERS DETAIL PAGE ##############################
 
 class UserDetailView(View):
     def get(self, request, id):
@@ -209,8 +209,9 @@ class NotificationView():
 
 
 
+###################### FOLLOW SYSTEM ##############################
 
-class FollowView(View):
+class FollowView(LoginRequiredMixin, View):
     def get(self, request):
         request_user = request.user
         user_id = request.POST.get('user_id')
@@ -251,6 +252,10 @@ class FollowView(View):
 
 
 
+
+
+###################### POST LIKE SYSTEM ##############################
+
 class PostLikeView(LoginRequiredMixin, View):
     def get(self, request):
         post_id = request.POST.get('post_id')
@@ -287,6 +292,10 @@ class PostLikeView(LoginRequiredMixin, View):
 
 
 
+
+
+
+###################### POST SAVE SYSTEM ##############################
 
 class PostSaveView(LoginRequiredMixin, View):
     def get(self, request):
@@ -326,6 +335,9 @@ class PostSaveView(LoginRequiredMixin, View):
 
 
 
+
+###################### USER'S SAVED POSTS ##############################
+
 class SavedPostPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
@@ -337,6 +349,11 @@ class SavedPostPageView(LoginRequiredMixin, View):
         return render(request, 'posts/saved-post.html', context)
 
 
+
+
+
+
+###################### USER'S LIKED POSTS ##############################
 
 class LikedPostPageView(LoginRequiredMixin, View):
     def get(self, request):
@@ -350,6 +367,12 @@ class LikedPostPageView(LoginRequiredMixin, View):
 
 
 
+
+
+
+
+###################### MY CREATED POSTS ##############################
+
 class MyPostsPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
@@ -362,7 +385,12 @@ class MyPostsPageView(LoginRequiredMixin, View):
 
 
 
-class FriendsListPageView(View):
+
+
+
+###################### FRIENDS LIST ##############################
+
+class FriendsListPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         friends = user.profile.followed.all()
@@ -384,6 +412,9 @@ class FriendsListPageView(View):
 
 
 
+
+###################### REQUEST USER'S FOLLOWERS PAGE ##############################
+
 class UserFollowersPageView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
@@ -400,6 +431,9 @@ class UserFollowersPageView(LoginRequiredMixin, View):
         return render(request, 'user/followers.html', context)
 
 
+
+
+###################### REQUEST USER'S FOLLOWING PAGE ##############################
 
 class UserFollowingsPageView(LoginRequiredMixin, View):
     def get(self, request):
@@ -423,6 +457,9 @@ class UserFollowingsPageView(LoginRequiredMixin, View):
 
 
 
+
+###################### ALL USERS SEARCH ##############################
+
 class SearchUsersPageView(View):
     def get(self, request):
         search = request.GET.get('q', '')
@@ -438,6 +475,11 @@ class SearchUsersPageView(View):
         return render(request, 'user/users-search.html', context)
 
 
+
+
+
+###################### DELETE REVIEW ##############################
+
 def delete_review(request, post_id, review_id):
     post = get_object_or_404(Post, id=post_id)
     review = get_object_or_404(Review, id=review_id, post_id=post)
@@ -451,8 +493,9 @@ def delete_review(request, post_id, review_id):
 
 
 
+###################### USER'S FLLOWERS PAGE ##############################
 
-class OneUserFollowersPageView(LoginRequiredMixin, View):
+class OneUserFollowersPageView(View):
     def get(self, request, id):
         user = CustomUser.objects.get(id=id)
         search = request.GET.get('q', '')
@@ -469,7 +512,10 @@ class OneUserFollowersPageView(LoginRequiredMixin, View):
 
 
 
-class OneUserFollowingsPageView(LoginRequiredMixin, View):
+
+###################### USER'S FOLLOWING PAGE ##############################
+
+class OneUserFollowingsPageView(View):
     def get(self, request, id):
         user = CustomUser.objects.get(id=id)
         search = request.GET.get('q', '')
