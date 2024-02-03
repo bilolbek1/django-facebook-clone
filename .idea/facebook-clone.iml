@@ -29,6 +29,7 @@
       <list>
         <option value="$MODULE_DIR$/facebook/templates" />
         <option value="$MODULE_DIR$/user/templates" />
+        <option value="$MODULE_DIR$/chat/templates" />
       </list>
     </option>
   </component>

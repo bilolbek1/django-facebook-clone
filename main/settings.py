@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # ADDED APPS
     'user',
     'facebook',
+    'chat',
 ]
 
 MIDDLEWARE = [
