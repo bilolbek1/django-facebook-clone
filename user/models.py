@@ -6,4 +6,4 @@ class CustomUser(AbstractUser):
     # followed = models.ManyToManyField(CustomUser, related_name='followed')
 
     def __str__(self):
-        return f"{self.username} {self.id}"
+        return f"{self.username}"

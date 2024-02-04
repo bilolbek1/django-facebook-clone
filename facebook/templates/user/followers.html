@@ -106,7 +106,7 @@
 			<p id="info"><b>{{ i.username }}</b> <br> <span><b>{{ i.profile.followed.all.count }}</b> <i>followers</i></p>
 			<div id="button-block">
                 <a href="{% url 'user-detail' i.id %}" id="confirm">Go profile</a>
-				<a id="delete">Go chat</a>
+				<a href="{% url 'user-chat' i.username %}" id="delete">Go chat</a>
 			</div>
 		</div>
 	</div>

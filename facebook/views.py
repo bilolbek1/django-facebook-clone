@@ -166,19 +166,6 @@ class DeletePostView(LoginRequiredMixin, View):
 
 
 
-###################### USERS LIST PAGE ##############################
-
-
-class UsersListView(View):
-    def get(self, request):
-        users = CustomUser.objects.exclude(username=request.user.username)
-        context = {
-            'users': users
-        }
-        return render(request, 'user/users_list.html', context)
-
-
-
 
 ###################### USERS DETAIL PAGE ##############################
 

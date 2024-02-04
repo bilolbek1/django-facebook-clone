@@ -10,6 +10,13 @@ MESSAGES_TYPE = (
 )
 
 
+CONTACT_CHOICES = (
+    ('Contacted', 'Contacted'),
+    ('Contact', 'Contact')
+)
+
+
+
 class Message(models.Model):
     send_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sender', null=True)
     recipient_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='recipient', null=True)
@@ -18,4 +25,9 @@ class Message(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
 
 
+class Contact(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='chat_user', null=True)
+    request_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='request_user', null=True)
+    value = models.CharField(choices=CONTACT_CHOICES, default='Contact', max_length=10)
+    added_time = models.DateTimeField(auto_now_add=True)
 
