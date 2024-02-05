@@ -365,6 +365,7 @@ section {
 
                 </li>
                 <div class="callGroup" style="display: flex; flex-direction: row">
+                    <a style="margin-right: 1vw" href="{% url 'contact-list' %}"><button class="btn btn-primary mt-1"><-- Go contacts</button></a>
                     <form method="post" action="{% url 'contact' %}">{% csrf_token %}
                         <input type="hidden" value="{{ user.username }}" name="user">
                         {% if user not in request.user.profile.chats.all %}

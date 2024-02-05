@@ -87,6 +87,33 @@ class ContactUncontacttView(LoginRequiredMixin, View):
 
 
 
+class ContactListView(LoginRequiredMixin, View):
+    def get(self, request):
+        user = CustomUser.objects.get(username=request.user.username)
+        contacts = user.profile.chats.all()
+        search = request.GET.get('q', '')
+        if search:
+            contacts = contacts.filter(
+                Q(first_name__icontains=search) | Q(username__icontains=search)
+            )
+        user_messages = {}
+        for i in contacts:
+            message = Message.objects.filter(
+                Q(Q(send_user=user) & Q(recipient_user=i)) | Q(
+                    Q(send_user=i) & Q(recipient_user=user))
+            ).last()
+            user_messages[i] = message
+        print(user_messages)
+
+        print(contacts)
+
+        context = {
+            "contacts": contacts,
+            'user_messages': user_messages,
+            'search': search,
+        }
+        return render(request, 'contacts.html', context)
+
 
 
 
