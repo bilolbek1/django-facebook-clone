@@ -60,7 +60,7 @@
 
 body {
     height: 100vh;
-    background: url("https://4kwallpapers.com/images/walls/thumbs_3t/12662.jpg");
+    background: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsky&psig=AOvVaw0awtholSRNGGZRxoRTkdJQ&ust=1707291544425000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjA0OGaloQDFQAAAAAdAAAAABAE");
     background-size: 100% 100%;
     display: grid;
     place-items: center;
@@ -365,7 +365,7 @@ section {
 
                 </li>
                 <div class="callGroup" style="display: flex; flex-direction: row">
-                    <a style="margin-right: 1vw" href="{% url 'contact-list' %}"><button class="btn btn-primary mt-1"><-- Go contacts</button></a>
+                    <a style="margin-right: 1vw" href="{% url 'contact-list' %}"><i style="color: white" title="Go contacts" class="fa-solid fa-backward"></i></a>
                     <form method="post" action="{% url 'contact' %}">{% csrf_token %}
                         <input type="hidden" value="{{ user.username }}" name="user">
                         {% if user not in request.user.profile.chats.all %}
@@ -374,9 +374,8 @@ section {
                         <button class="btn btn-danger mt-1">Delete</button>
                         {% endif %}
                     </form>
-                    <a href="{% url 'user-detail' user.id %}"><i style="color: white" class="fa-solid fa-user"></i></a>
-                    <i class="fa-solid fa-phone"></i>
-                    <i class="fa-solid fa-video"></i>
+                    <a style="margin-right: 1vw; margin-left: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: white" class="fa-solid fa-user"></i></a>
+                
 
                 </div>
             </div>
@@ -389,7 +388,19 @@ section {
                                 <p class="messageContent">{{ i.text }}</p>
                                 <div class="messageDetails">
                                     <div class="messageTime">{{ i.created_time|date:"D d | H:i" }}</div>
+                                    {% if i.send_status == 'sending' %}
                                     <i class="fa-solid fa-check"></i>
+                                    {% else %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                                          <path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0"/>
+                                          <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708"/>
+                                        </svg>
+                                    {% endif %}
+                                <form method="post" action="{% url 'message-delete' user.username i.pk %}">
+                                    {% csrf_token %}
+                                    
+                                    <button style="border: none;background-color: #036666" type="submit"><i style="color: red; margin-left: 0.5vw" class="fa-solid fa-trash"></i></button>
+                                </form>
                                 </div>
                             </div>
                         {% else %}
@@ -397,7 +408,6 @@ section {
                                 <p class="messageContent">{{ i.text }}</p>
                                 <div class="messageDetails">
                                     <div class="messageTime">{{ i.created_time|date:"D d | M Y | H:i" }}</div>
-                                    <i class="fa-solid fa-check"></i>
                                 </div>
                             </div>
                         {% endif %}

@@ -30,7 +30,7 @@
 
 body {
     height: 100vh;
-    background: url("https://4kwallpapers.com/images/walls/thumbs_3t/12662.jpg");
+    background: #87888a;
     background-size: 100% 100%;
     display: grid;
     place-items: center;
@@ -198,7 +198,7 @@ section {
     {#padding: 10px;#}
 }
 .GroupDescrp{
-    margin: -0.9vw 0vw 0vw 0vw;
+    margin: -0.8vw 0vw 0vw 0vw;
 }
 
 .GroupDescrp {
@@ -213,6 +213,7 @@ section {
     font-weight: 900;
     padding: 5px 10px;
     margin-bottom: 0.2vw;
+    color: wheat;
 }
 
 .group:hover {
@@ -333,10 +334,8 @@ section {
         <div class="sideNav2"  style="width: 90vw; margin-left: 90vw;">
             <div class="SideNavhead">
                 <h2>Chats</h2>
-                <a href="{% url 'home' %}"><button class="btn btn-dark"> <-- Go home</button></a>
-                <i class="fa-solid fa-filter"></i>
-                <i class="fa-solid fa-user-plus"></i>
-
+                <a href="{% url 'home' %}"><i style="color: white" title="Go home" class="fa-solid fa-backward"></i></a>
+                
             </div>
             <form class="SearchInputHolder">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -345,16 +344,21 @@ section {
                 <hr>
 
             {% if contacts %}
-                {% for users, messages in user_messages.items %}
+                {% for users, data in user_messages.items %}
+                    {% for keys, messages in data.items %}
 
                     <li class="group">
-                        <img style="background-size: cover; object-fit: cover" class="avatar" src="{{ users.image.url }}" alt="">
+                        <img style="background-size: cover; object-fit: cover; width: 4vw; height: 4vw; margin-right: 1vw" class="avatar" src="{{ users.image.url }}" alt="">
                         <a style="text-decoration: none; color: white" href="{% url 'user-chat' users.username %}"><p class="GroupName">{{ users.username }}</p></a>
-                        <p class="GroupDescrp">{% if not messages %} Still you have no messages
+                        <p class="GroupDescrp">{% if not messages %} No messaged
                             {% else %}{{ messages.text }}
                             {% endif %}
-                            <button style="border-radius: 50%; margin-left: 10vw;" class="btn btn-warning">6</button></p>
+                            {% if keys > 0 %}
+                            <button style="border-radius: 50%; margin-left: 10vw; width: 2vw; height: 2vw; text-align: center; padding: 0vw" class="btn btn-success">{{ keys }}</button></p>
+                            {% else %}
+                            {% endif %}
                     </li>
+                        {% endfor %}
                 {% endfor %}
             {% endif %}
 
