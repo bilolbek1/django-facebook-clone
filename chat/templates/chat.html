@@ -1,34 +1,3 @@
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Title</title>#}
-{#</head>#}
-{#<body>#}
-{#    Hello this is chat section#}
-{#    <h1>{{ user.username }}</h1>#}
-{#    #}
-{#    #}
-{#    {% if messages %}#}
-{#        #}
-{#        {% for i in messages %}#}
-{#        #}
-{#            <p>{{ i.text }}</p>#}
-{#        {% endfor %}#}
-{#    #}
-{#    {% endif %}#}
-{##}
-{#    <form method="post" action="{% url 'message' user.username %}">{% csrf_token %}#}
-{#        #}
-{#        {{ message_form.text }}#}
-{#        #}
-{#        <button type="submit">Submit</button>#}
-{#    #}
-{#    </form>#}
-{##}
-{#    #}
-{#</body>#}
-{#</html>#}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +19,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-
     transition-duration: 0.25s;
 }
 
@@ -60,7 +28,7 @@
 
 body {
     height: 100vh;
-    background: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Fso%2Fsky&psig=AOvVaw0awtholSRNGGZRxoRTkdJQ&ust=1707291544425000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCKjA0OGaloQDFQAAAAAdAAAAABAE");
+    background: url("https://4kwallpapers.com/images/walls/thumbs_3t/12662.jpg");
     background-size: 100% 100%;
     display: grid;
     place-items: center;
@@ -374,8 +342,7 @@ section {
                         <button class="btn btn-danger mt-1">Delete</button>
                         {% endif %}
                     </form>
-                    <a style="margin-right: 1vw; margin-left: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: white" class="fa-solid fa-user"></i></a>
-                
+                    <a style="margin-left: 1vw; margin-right: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: white" class="fa-solid fa-user"></i></a>
 
                 </div>
             </div>
