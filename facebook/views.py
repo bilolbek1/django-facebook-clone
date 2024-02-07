@@ -37,8 +37,14 @@ class HomePageView(View):
     def get(self, request):
         posts = Post.objects.all()
         posts = random.sample(list(posts), 2)
+        if request.user:
+            user = CustomUser.objects.get(id=request.user.id)
+        else:
+            return redirect('login')
+        contacts = user.profile.chats.all()
         context = {
             'posts': posts,
+            'contacts': contacts,
         }
         return render(request, 'home.html', context)
 

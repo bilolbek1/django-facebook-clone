@@ -131,47 +131,23 @@
         </div>
         <!-- right-sidebar-------- -->
         <div class="right-sidebar">
-            <div class="sidebar-tittle">
-                <h4>Search</h4>
-                <a href="">find you want</a>
-            </div>
-
-            <form class="input-group ">
-                <input value="{{ search }}" name="q" style="padding: 0.5vw" type="search" class="form-control rounded"
-                       placeholder="Search" aria-label="Search" aria-describedby="search-addon"/>
-                <button type="submit" class="btn btn-outline-warning" data-mdb-ripple-init>search</button>
-            </form>
-
-            <div class="sidebar-tittle">
-                <h4>advertisement</h4>
-                <a href="">close</a>
-            </div>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAACfCAMAAABX0UX9AAAAk1BMVEUAAAAAljn////tLjgSEhISmkHz8/Pz+/cAmjn0LzoAmDnwKzjtJzLtLDbsHCn0Jzj95+j5v8FxFhupISjUKTLsEyPzgIUtiznUPTj4Ijg0CgxvFRo4Cw0tCAvvUFf0h4zvRk7sFybvTFOnWThxdDmsVjhsdjk4iDklBwk6FhcQJSTrqq3sABfyc3nstLLXOTgljTnTP6nVAAADoUlEQVR4nO2ciXrSQBRGU6/aJdC4tArutdZd6/s/nUkpAiHLzNyZRHLPeYJwvh5/SCZmzzNQcHrxdexLOGRE5NnY13DAlPpOCTgYqfxdvBr7Mg4VWUHAYdzrI+AwZO3v4u3Yl3KIyD/mBOzPRh8BByDb/lhgX2QXAvajpo+A/ZC6PwL2oa6PgL1o0EfA7jToI2B3mvSVvB77ug6EFn0E7EaLPgJ2o00fATvRoY+A++nQR8D9dOkj4F569BFwNz36yoDfjH2J/zN9+gi4Ewd9BNyOgz4eI7Xjok8k5yZWM276CLgFR30scDOu+oQFbsJDHwHv46GPBd7HR5/wGKmOpz4C3sVTHzexdvHVJyzwNgH6CHhDgD4WeEOIPmGB1wTqI+AVgfpY4BWh+oSAKxT6CFiljwXW6RMCVuqzHrBSn/WAtfrEdsAR9FkOOIK+MuBv3x+aJIo+yeXH8WOLxNEn86v3DywSSZ/I+bsnY3+WEYimT2bnT8f+MMMTT5/ML+0FHFFfGfAHawFH1SezmbGA4+orA34x9icalMj6rC1wdH0yuzQUcHx9phY4gT5LC5xEn50FTqPPzAIn0mdlgZPps7HA6fSZWOCE+sqAP0494KT6pn8TK62+yS9wYn1TX+Dk+mR2NeGA0+ub9AIPoG/KCzyIvun+Bh5G32QXeCB9Mv/5a+yPmoLB/vqmOR/826eC5VXB9z4V/OpQwW9eFdxxUcH9PhXcbVbBsw4VPGlTwXNeFZwyUMEZFxWcsFLB+T4VnC5VwdlmFZysV8F7HSp4q0gF77Sp4I1KFbzPq4K3yVXE+r8Mfh+bJIq+4vbLI5vE0Le8Pjs7soleXy6fTqza0+srFi9Pxv4Q46HVV1wfmf3TO9LqMx1uhUpfcWs53AqNvqXtcCvC9ZkPtyJYX/lV2Xi4FaH6jC/umjB9eU64dwTps/1VeZsQfcsbwr3HXx+Lu4W3PhZ3G199hd2bU0346WNxa3jpY3Hr+Ohjcfdw15fLZ8Kt46yPxW3CVV9xw+I24KYvL1jcRpz0sbhtuOhbEm4b/frynMVtpVdfsWBx2+nTx+J20q2P37g9dOpjcfvo0ke4vbTrY3EdaNXH4rrQpq/g5pQLzfpYXEca9RGuK036WFxn9vURrgd7+viq7ENdH0cevdjVxwEMT3b0sbi+bOtjcb3Z6GNxA8g24bK4/qz1sbhBZCyuhjt9HMAIpdLHkcdgMhZXQ1Ys/hBuMBmLq+EvhMMsCJZiTNUAAAAASUVORK5CYII="
+            <img style="margin-top: 1vw; margin-bottom: 1vw" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAACfCAMAAABX0UX9AAAAk1BMVEUAAAAAljn////tLjgSEhISmkHz8/Pz+/cAmjn0LzoAmDnwKzjtJzLtLDbsHCn0Jzj95+j5v8FxFhupISjUKTLsEyPzgIUtiznUPTj4Ijg0CgxvFRo4Cw0tCAvvUFf0h4zvRk7sFybvTFOnWThxdDmsVjhsdjk4iDklBwk6FhcQJSTrqq3sABfyc3nstLLXOTgljTnTP6nVAAADoUlEQVR4nO2ciXrSQBRGU6/aJdC4tArutdZd6/s/nUkpAiHLzNyZRHLPeYJwvh5/SCZmzzNQcHrxdexLOGRE5NnY13DAlPpOCTgYqfxdvBr7Mg4VWUHAYdzrI+AwZO3v4u3Yl3KIyD/mBOzPRh8BByDb/lhgX2QXAvajpo+A/ZC6PwL2oa6PgL1o0EfA7jToI2B3mvSVvB77ug6EFn0E7EaLPgJ2o00fATvRoY+A++nQR8D9dOkj4F569BFwNz36yoDfjH2J/zN9+gi4Ewd9BNyOgz4eI7Xjok8k5yZWM276CLgFR30scDOu+oQFbsJDHwHv46GPBd7HR5/wGKmOpz4C3sVTHzexdvHVJyzwNgH6CHhDgD4WeEOIPmGB1wTqI+AVgfpY4BWh+oSAKxT6CFiljwXW6RMCVuqzHrBSn/WAtfrEdsAR9FkOOIK+MuBv3x+aJIo+yeXH8WOLxNEn86v3DywSSZ/I+bsnY3+WEYimT2bnT8f+MMMTT5/ML+0FHFFfGfAHawFH1SezmbGA4+orA34x9icalMj6rC1wdH0yuzQUcHx9phY4gT5LC5xEn50FTqPPzAIn0mdlgZPps7HA6fSZWOCE+sqAP0494KT6pn8TK62+yS9wYn1TX+Dk+mR2NeGA0+ub9AIPoG/KCzyIvun+Bh5G32QXeCB9Mv/5a+yPmoLB/vqmOR/826eC5VXB9z4V/OpQwW9eFdxxUcH9PhXcbVbBsw4VPGlTwXNeFZwyUMEZFxWcsFLB+T4VnC5VwdlmFZysV8F7HSp4q0gF77Sp4I1KFbzPq4K3yVXE+r8Mfh+bJIq+4vbLI5vE0Le8Pjs7soleXy6fTqza0+srFi9Pxv4Q46HVV1wfmf3TO9LqMx1uhUpfcWs53AqNvqXtcCvC9ZkPtyJYX/lV2Xi4FaH6jC/umjB9eU64dwTps/1VeZsQfcsbwr3HXx+Lu4W3PhZ3G199hd2bU0346WNxa3jpY3Hr+Ohjcfdw15fLZ8Kt46yPxW3CVV9xw+I24KYvL1jcRpz0sbhtuOhbEm4b/frynMVtpVdfsWBx2+nTx+J20q2P37g9dOpjcfvo0ke4vbTrY3EdaNXH4rrQpq/g5pQLzfpYXEca9RGuK036WFxn9vURrgd7+viq7ENdH0cevdjVxwEMT3b0sbi+bOtjcb3Z6GNxA8g24bK4/qz1sbhBZCyuhjt9HMAIpdLHkcdgMhZXQ1Ys/hBuMBmLq+EvhMMsCJZiTNUAAAAASUVORK5CYII="
                  class="sidebar-ads">
 
-            <div class="sidebar-tittle">
-                <h4>conversation</h4>
-                <a href="">Hide chat</a>
-            </div>
-            <div class="online-list">
-                <div class="online">
-                    <img src="https://cdn.shopify.com/s/files/1/0702/0511/2635/files/mula.jpg" width="120px">
-                </div>
-                <p> mula111</p>
-            </div>
-            <div class="online-list">
-                <div class="online">
-                    <img src="https://cdn.shopify.com/s/files/1/0702/0511/2635/files/member-3.png">
-                </div>
-                <p> fazil nusrat1212</p>
-            </div>
-            <div class="online-list">
-                <div class="online">
-                    <img src="https://cdn.shopify.com/s/files/1/0702/0511/2635/files/Omar_Parwani.jpg?v=1703156167">
-                </div>
-                <p> faisal nusrat</p>
-            </div>
-
+            
+            {% if contacts %}
+                {% for i in contacts %}
+                    
+                    <div style="margin-left: 2vw" class="online-list">
+                        <div class="online">
+                            <img src="{{ i.image.url }}" width="120px">
+                        </div>
+                        <a style="text-decoration: none; color: black; margin-top: 0.6vw" href="{% url 'user-detail' i.id %}"><p>{{ i.username }}</p></a>
+                    </div>
+                
+                {% endfor %}
+            {% endif %}
+           
         </div>
     </div>
 

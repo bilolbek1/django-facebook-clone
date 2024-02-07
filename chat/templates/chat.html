@@ -28,7 +28,7 @@
 
 body {
     height: 100vh;
-    background: url("https://4kwallpapers.com/images/walls/thumbs_3t/12662.jpg");
+    background-color: #385591;
     background-size: 100% 100%;
     display: grid;
     place-items: center;
@@ -39,7 +39,7 @@ main {
     width: calc(100% - 100px);
     overflow: hidden;
     border-radius: 10px;
-
+    background-color: #f8f6f6;
     color: white;
     display: grid;
     font-family: Roboto;
@@ -97,7 +97,7 @@ section {
     backdrop-filter: blur(55px);
     display: flex;
     flex-direction: column;
-    border: 1px solid #ffffff21;
+    border: 1px solid rgba(0, 0, 0, 0.13);
 
     overflow: auto;
 }
@@ -146,6 +146,7 @@ section {
 .GroupName {
     font-weight: 900;
     padding: 5px 10px;
+    color: #3875d7;
 }
 
 .group:hover {
@@ -161,7 +162,7 @@ section {
 .ChatHead {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #ffffff21;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.13);
 
 }
 
@@ -252,7 +253,7 @@ section {
 }
 #MessageForm input:focus{
     outline:none;
-    border:1px solid #00f5d4;
+    border:1px solid #181818;
 }
 .MessageContainer{
     display: flex;
@@ -275,12 +276,12 @@ section {
     position: relative;
 }
 .you{
-    background-color: #dee2e6;
-    color:#000000;
+    background-color: #3875d7;
+    color: #ffffff;
     text-align:left;
 }
 .message i{
-    color:#00f5d4
+    color: #fdffff
 }
 .messageDetails{
     font-size: 0.7rem;
@@ -306,10 +307,10 @@ section {
 
 }
 .you .messageDetails .messageTime{
-    color:rgb(38, 38, 38);
+    color: rgb(255, 255, 255);
 }
 .you i{
-    color:#036666
+    color: #f5f5f5
 }
 .me{
     margin-left:auto;
@@ -333,7 +334,7 @@ section {
 
                 </li>
                 <div class="callGroup" style="display: flex; flex-direction: row">
-                    <a style="margin-right: 1vw" href="{% url 'contact-list' %}"><i style="color: white" title="Go contacts" class="fa-solid fa-backward"></i></a>
+                    <a title="Go back" href="{% url 'contact-list' %}" style="margin-right: 1vw;"><i style="color:#385591 " class="fa-brands fa-facebook-messenger"></i></a>
                     <form method="post" action="{% url 'contact' %}">{% csrf_token %}
                         <input type="hidden" value="{{ user.username }}" name="user">
                         {% if user not in request.user.profile.chats.all %}
@@ -342,7 +343,7 @@ section {
                         <button class="btn btn-danger mt-1">Delete</button>
                         {% endif %}
                     </form>
-                    <a style="margin-left: 1vw; margin-right: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: white" class="fa-solid fa-user"></i></a>
+                    <a style="margin-left: 1vw; margin-right: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: #385591" class="fa-solid fa-user"></i></a>
 
                 </div>
             </div>
@@ -366,7 +367,7 @@ section {
                                 <form method="post" action="{% url 'message-delete' user.username i.pk %}">
                                     {% csrf_token %}
                                     
-                                    <button style="border: none;background-color: #036666" type="submit"><i style="color: red; margin-left: 0.5vw" class="fa-solid fa-trash"></i></button>
+                                    <button style="border: none;background-color: #036666" type="submit"><i style="color: #ff5f5f; margin-left: 0.5vw" class="fa-solid fa-trash"></i></button>
                                 </form>
                                 </div>
                             </div>
