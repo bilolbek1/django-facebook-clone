@@ -12,17 +12,7 @@
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <style>
-    /*
 
-All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 310). 
-        
-The 'supports' rule will only run if your browser supports CSS grid.
-
-Flexbox and floats are used as a fallback so that browsers which don't support grid will still recieve a similar layout.
-
-*/
-
-/* Base Styles */
 
 :root {
   font-size: 10px;
@@ -421,10 +411,12 @@ Remove or comment-out the code block below to see how the browser will fall-back
                     {% else %}
                         <button style="width: 8vw; height: 3vw; padding: 0.3vw; font-size: 1.3vw; background-color: #446aff; color: white; margin-left: 4vw;" class="btn btn-primary" type="submit">Followed</button>
                     {% endif %}
-            
+                    
             
                 </form>
 
+               <a style="color: black" href="{% url 'user-chat' user.username %}"><button style="width: 8vw; height: 3vw; padding: 0.3vw; font-size: 1.3vw; margin-left: 4vw;" class="btn btn-outline-dark" type="submit">Messaging</button></a>
+            
 
 			</div>
 
@@ -440,7 +432,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
 			<div class="profile-bio">
 
-				<p><span class="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+				<p><span class="profile-real-name">Welcome</span> Hi I'm {{ user.first_name }} {{ user.last_name }} this is my profile 📷✈️🏕️</p>
 
 			</div>
 

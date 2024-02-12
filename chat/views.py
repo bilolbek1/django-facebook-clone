@@ -138,7 +138,6 @@ class DeleteMessageView(LoginRequiredMixin, DeleteView):
         del_message = Message.objects.get(id=id, send_user=request.user, recipient_user=user)
 
         del_message.delete()
-        messages.success(request, 'Message deleted')
 
         return redirect(reverse('user-chat', kwargs={'username': username}))
 
