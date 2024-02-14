@@ -1,6 +1,7 @@
 from django.test import TestCase
 from facebook.models import Post, Profile
 from django.urls import reverse
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 from user.models import CustomUser
 
@@ -33,3 +34,63 @@ class FacebookTestCase(TestCase):
         response = self.client.get(reverse('post-detail', kwargs={'id': post.id}))
 
         self.assertContains(response, post.title)
+
+
+    def test_profile_page(self):
+        user = self.user
+
+        response = self.client.get(reverse('user-profile'))
+
+        user_followers_count = user.profile.followed.all().count()
+        self.assertContains(response, user.image)
+        self.assertContains(response, user_followers_count)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
