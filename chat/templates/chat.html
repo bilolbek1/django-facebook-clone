@@ -19,6 +19,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+
     transition-duration: 0.25s;
 }
 
@@ -28,7 +29,7 @@
 
 body {
     height: 100vh;
-    background-color: #385591;
+    background: url("https://wallpapercave.com/wp/wp7801749.jpg");
     background-size: 100% 100%;
     display: grid;
     place-items: center;
@@ -39,13 +40,14 @@ main {
     width: calc(100% - 100px);
     overflow: hidden;
     border-radius: 10px;
-    background-color: #f8f6f6;
     color: white;
     display: grid;
     font-family: Roboto;
     grid-template-columns: 60px calc(30% - 30px) calc(70% - 30px);
     place-items: center;
 }
+
+
 
 
 .sideNav1 li {
@@ -65,7 +67,6 @@ main {
     color: #00f5d4;
     background-color: #00f5d424;
 }
-
 
 .SideNavhead h2 {
     color: #00f5d4;
@@ -97,7 +98,7 @@ section {
     backdrop-filter: blur(55px);
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.13);
+    border: 1px solid #ff050521;
 
     overflow: auto;
 }
@@ -108,7 +109,6 @@ section {
     bottom: 10px;
     left: 25px;
 }
-
 
 .SearchInputHolder hr {
     content: "";
@@ -129,6 +129,7 @@ section {
     color: #00f5d4
 }
 
+
 .group {
     display: grid;
     grid-template-columns: 55px calc(100% - 55px);
@@ -142,11 +143,9 @@ section {
     cursor: pointer;
 }
 
-
 .GroupName {
     font-weight: 900;
     padding: 5px 10px;
-    color: #3875d7;
 }
 
 .group:hover {
@@ -162,7 +161,7 @@ section {
 .ChatHead {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.13);
+    border-bottom: 2px solid #ffffff21;
 
 }
 
@@ -253,7 +252,7 @@ section {
 }
 #MessageForm input:focus{
     outline:none;
-    border:1px solid #181818;
+    border:1px solid #00f5d4;
 }
 .MessageContainer{
     display: flex;
@@ -276,12 +275,12 @@ section {
     position: relative;
 }
 .you{
-    background-color: #3875d7;
-    color: #ffffff;
+    background-color: #dee2e6;
+    color:#000000;
     text-align:left;
 }
 .message i{
-    color: #fdffff
+    color:#00f5d4
 }
 .messageDetails{
     font-size: 0.7rem;
@@ -307,10 +306,10 @@ section {
 
 }
 .you .messageDetails .messageTime{
-    color: rgb(255, 255, 255);
+    color:rgb(38, 38, 38);
 }
 .you i{
-    color: #f5f5f5
+    color:#036666
 }
 .me{
     margin-left:auto;
@@ -318,7 +317,6 @@ section {
     
     text-align: right;
 }
-
 </style>
 
 
@@ -334,7 +332,7 @@ section {
 
                 </li>
                 <div class="callGroup" style="display: flex; flex-direction: row">
-                    <a title="Go back" href="{% url 'contact-list' %}" style="margin-right: 1vw;"><i style="color:#385591 " class="fa-brands fa-facebook-messenger"></i></a>
+                    <a title="Go back" href="{% url 'contact-list' %}" style="margin-right: 1vw;"><i style="color:#8ec4ff " class="fa-brands fa-facebook-messenger"></i></a>
                     <form method="post" action="{% url 'contact' %}">{% csrf_token %}
                         <input type="hidden" value="{{ user.username }}" name="user">
                         {% if user not in request.user.profile.chats.all %}
@@ -343,7 +341,7 @@ section {
                         <button class="btn btn-danger mt-1">Delete</button>
                         {% endif %}
                     </form>
-                    <a style="margin-left: 1vw; margin-right: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: #385591" class="fa-solid fa-user"></i></a>
+                    <a style="margin-left: 1vw; margin-right: 1vw" href="{% url 'user-detail' user.id %}"><i title="Go {{ user }}'s profile" style="color: #8ec4ff" class="fa-solid fa-user"></i></a>
 
                 </div>
             </div>
