@@ -33,14 +33,11 @@ class ProfileView(LoginRequiredMixin, View):
 
 ###################### HOME PAGE ##############################
 
-class HomePageView(View):
+class HomePageView(LoginRequiredMixin, View):
     def get(self, request):
         posts = Post.objects.all()
-        posts = random.sample(list(posts), 2)
-        if request.user:
-            user = CustomUser.objects.get(id=request.user.id)
-        else:
-            return redirect('login')
+        posts = random.sample(list(posts), 3)
+        user = CustomUser.objects.get(id=request.user.id)
         contacts = user.profile.chats.all()
         context = {
             'posts': posts,
