@@ -36,7 +36,11 @@ class ProfileView(LoginRequiredMixin, View):
 class HomePageView(LoginRequiredMixin, View):
     def get(self, request):
         posts = Post.objects.all()
-        posts = random.sample(list(posts), 3)
+        if posts.count() < 20:
+            count = posts.count()
+            posts = random.sample(list(posts), count)
+        else:
+            posts = random.sample(list(posts), 20)
         user = CustomUser.objects.get(id=request.user.id)
         contacts = user.profile.chats.all()
         context = {

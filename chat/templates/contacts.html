@@ -349,8 +349,8 @@ section {
 
                     <li class="group">
                         <img style="background-size: cover; object-fit: cover; width: 4vw; height: 4vw; margin-right: 1vw" class="avatar" src="{{ users.image.url }}" alt="">
-                        <a style="text-decoration: none; color: white" href="{% url 'user-chat' users.username %}"><p class="GroupName">{{ users.username }}</p></a>
-                        <p class="GroupDescrp">{% if not messages %} No messaged
+                        <a style="text-decoration: none; color: white; margin-left: 1vw;" href="{% url 'user-chat' users.username %}"><p class="GroupName">{{ users.username }}</p></a>
+                        <p style="margin-left: 1vw; margin-top: 0" class="GroupDescrp">{% if not messages %} No messaged yet
                             {% else %}{{ messages.text }}
                             {% endif %}
                             {% if keys > 0 %}
